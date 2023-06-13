@@ -16,6 +16,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.LASTOFHIM, function (sprite, oth
     game.gameOver(false)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite4, otherSprite4) {
+    music.stopAllSounds()
     sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
     sprites.destroyAllSpritesOfKind(SpriteKind.Food)
     sprites.destroyAllSpritesOfKind(SpriteKind.SECRET1)
@@ -110,7 +111,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite4, otherSp
     tiles.placeOnRandomTile(mySprite7, assets.tile`myTile10`)
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    music.play(music.createSoundEffect(WaveShape.Sine, 4442, 856, 255, 0, 149, SoundExpressionEffect.None, InterpolationCurve.Logarithmic), music.PlaybackMode.UntilDone)
+    music.play(music.createSoundEffect(WaveShape.Sine, 4442, 606, 255, 8, 149, SoundExpressionEffect.None, InterpolationCurve.Logarithmic), music.PlaybackMode.UntilDone)
     projectile = sprites.createProjectileFromSprite(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -220,6 +221,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.endsecret1, function (sprite, ot
     sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
     sprites.destroyAllSpritesOfKind(SpriteKind.Food)
     tiles.setCurrentTilemap(tilemap`level1`)
+    music.play(music.stringPlayable("B C5 B A B A G F ", 120), music.PlaybackMode.LoopingInBackground)
     mySprite2 = sprites.create(img`
         1 8 8 8 8 1 1 1 1 1 1 1 1 1 1 1 
         1 1 1 1 1 8 8 8 8 8 1 8 8 8 1 1 
@@ -329,6 +331,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.j, function (sprite, otherSprite
     game.splash("Finish this last maze..")
     game.splash("Then face his madness")
     tiles.setCurrentTilemap(tilemap`level8`)
+    music.play(music.stringPlayable("F F E E D E C D ", 120), music.PlaybackMode.LoopingInBackground)
     mySprite8 = sprites.create(img`
         1 5 5 5 5 5 5 5 5 5 1 1 5 5 5 5 
         1 5 5 1 1 1 1 1 1 1 1 1 5 5 5 5 
@@ -511,6 +514,7 @@ game.splash("Make your way through the maze..")
 game.splash("But don't touch it.")
 game.splash("あなたは彼らを助けなければなりません")
 tiles.setCurrentTilemap(tilemap`level1`)
+music.play(music.stringPlayable("B C5 B A B A G F ", 120), music.PlaybackMode.LoopingInBackground)
 mySprite2 = sprites.create(img`
     1 8 8 8 8 1 1 1 1 1 1 1 1 1 1 1 
     1 1 1 1 1 8 8 8 8 8 1 8 8 8 1 1 
@@ -631,4 +635,4 @@ let mySprite10 = sprites.create(img`
     8 8 8 1 1 1 1 1 8 8 8 8 8 8 8 8 
     `, SpriteKind.SECRET1)
 tiles.placeOnRandomTile(mySprite10, assets.tile`myTile4`)
-light.showAnimation(light.rainbowAnimation, 500)
+light.showAnimation(light.cometAnimation, 500)
